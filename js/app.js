@@ -89,7 +89,7 @@ function init() {
 google.setOnLoadCallback(init);
 
 /* All of this functionality is heavily reliant upon the DOM, so we
- * place our code in the $() function to ensure it doesn't execute
+ * place our code in the $() function to ensure it doesn't execute  
  * until the DOM is ready.
  */
 $(function() {

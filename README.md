@@ -1,3 +1,7 @@
+To run the project, just open the index.html file in a browser. This project is about using the Javascript Jasmine library to write test code for a news feed app. The tests are written in feedreader.js. The index.html file shows the results of the tests appended below the page content. 
+
+Course instructions below:-
+
 # Project Overview
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
