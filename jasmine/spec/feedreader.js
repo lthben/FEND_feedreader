@@ -91,14 +91,11 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
          beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
          });
 
-         it('Initial feed should contain at least a single .entry element within .feed container', function(done) {
+         it('Initial feed should contain at least a single .entry element within .feed container', function() {
             expect($('.feed .entry').length).toBeGreaterThan(0);
-            done();
          });
     })
 
@@ -107,21 +104,31 @@ $(function() {
         /* A test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
+         * 
+         * Checks whether title of first feed entry has changed.
          */
 
-         var titleString = $('.header-title').text();
+         var firstFeedFirstTitle, secondFeedFirstTitle;
 
          beforeEach(function(done) {
-            loadFeed(1, function() {
+            loadFeed(0, function() {
+                firstFeedFirstTitle = getFirstEntryTitle();
                 done();
             });
          });
 
+         function getFirstEntryTitle() {
+            return $('.entry h2').first().text();
+         }
+
 
          it('content actually changes when loadFeed is called', function(done) {
-            expect($('.header-title').text()).not.toBe(titleString);
-            done();
-         })
+            loadFeed(1, function() {
+                secondFeedFirstTitle = getFirstEntryTitle();
+                expect(firstFeedFirstTitle).not.toEqual(secondFeedFirstTitle);
+                done();
+            });
+         });
     })
         
-}());
+})
